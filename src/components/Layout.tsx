@@ -27,14 +27,14 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         </Box>
         <Spacer />
         <HStack spacing={12}>
+          <Link href="/scripting">
+            <Heading size="sm">Scripting</Heading>
+          </Link>
           <Link href="/transcription">
             <Heading size="sm">Transcription</Heading>
           </Link>
           <Link href="/thumbnail">
             <Heading size="sm">Thumbnail</Heading>
-          </Link>
-          <Link href="/scripting">
-            <Heading size="sm">Scripting</Heading>
           </Link>
         </HStack>
       </Flex>
