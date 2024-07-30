@@ -1,14 +1,19 @@
-import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
+import Layout from "@src/components/Layout";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <Container centerContent>
-      <Box pt={20}>
-        <Heading>Hello World</Heading>
-        <Text>
-          This is a Next.js app with Chakra UI and TypeScript
-        </Text>
+    <Layout>
+      <Heading size="lg">Welcome to Creator PRO</Heading>
+      <Box p={12}>
+        <Image
+          alt="Content Creator Ilustration"
+          src="/content_creator.svg"
+          width={300}
+          height={300}
+        />
       </Box>
-    </Container>
+    </Layout>
   );
 }
