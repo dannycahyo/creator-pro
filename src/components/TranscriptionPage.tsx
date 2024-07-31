@@ -4,15 +4,18 @@ import {
   Button,
   Heading,
   Input,
+  Skeleton,
+  Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
-import Layout from "./Layout";
-import PageCard from "./PageCard";
+import Layout from "../components/Layout";
+import PageCard from "../components/PageCard";
 
 export default function TranscriptionPage() {
   const [file, setFile] = useState<File | null>(null);
   const [transcription, setTranscription] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -24,15 +27,28 @@ export default function TranscriptionPage() {
   const handleTranscribe = async () => {
     if (!file) return;
 
-    // Placeholder for transcription logic
-    // Replace this with actual API call to transcribe the audio file
-    const result = await transcribeAudio(file);
-    setTranscription(result);
-  };
+    setIsLoading(true);
+    const formData = new FormData();
+    formData.append("audioFile", file);
 
-  const transcribeAudio = async (file: File): Promise<string> => {
-    // Simulate an API call to transcribe the audio file
-    return `Transcription result for: ${file.name}\n\nThis is a sample transcription text.`;
+    try {
+      const response = await fetch("/api/transcripting", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to transcribe audio");
+      }
+
+      const data = await response.json();
+      setTranscription(data.translatedText);
+    } catch (error) {
+      console.error("Error transcribing audio:", error);
+      setTranscription("Error transcribing audio");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -48,26 +64,29 @@ export default function TranscriptionPage() {
           </Heading>
           <Input
             type="file"
-            accept=".mp3,.mp4,.mpeg,.mpga,.m4a,.wav,.webm"
+            accept=".wav,.mp3,.aiff,.aac,.ogg,.flac"
             onChange={handleFileChange}
             my={4}
           />
-          <Button onClick={handleTranscribe} isDisabled={!file}>
-            Transcribe
+          <Button
+            onClick={handleTranscribe}
+            isDisabled={!file || isLoading}
+          >
+            {isLoading ? "Transcribing..." : "Transcribe"}
           </Button>
         </Box>
         <Box borderWidth="1px" borderRadius="lg" p={4} w="100%">
           <Heading as="h3" size="md" mb={2}>
             Transcription Result
           </Heading>
-          {transcription ? (
-            transcription.split("\n\n").map((paragraph, index) => (
-              <Text key={index} mb={2}>
-                {paragraph}
-              </Text>
-            ))
+          {isLoading ? (
+            <Stack>
+              <Skeleton height="20px" />
+              <Skeleton height="20px" />
+              <Skeleton height="20px" />
+            </Stack>
           ) : (
-            <Text>No transcription available.</Text>
+            <Text mb={2}>{transcription}</Text>
           )}
         </Box>
       </VStack>
