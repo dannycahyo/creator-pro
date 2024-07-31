@@ -26,7 +26,7 @@ export default function PageCard({
           <Heading size="sm">Creator PRO</Heading>
         </AbsoluteCenter>
       </Box>
-      <Text>{pageDesc}</Text>
+      <Text textAlign="center">{pageDesc}</Text>
     </Box>
   );
 }
