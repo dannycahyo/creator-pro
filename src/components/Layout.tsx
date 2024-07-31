@@ -6,6 +6,7 @@ import {
   Spacer,
   HStack,
   Center,
+  Container,
 } from "@chakra-ui/react";
 
 type LayoutProps = {
@@ -38,9 +39,9 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
           </Link>
         </HStack>
       </Flex>
-      <Center>
+      <Container maxW="container.xl">
         <Box p={20}>{children}</Box>
-      </Center>
+      </Container>
     </Box>
   );
 }
