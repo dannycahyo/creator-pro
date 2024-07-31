@@ -5,8 +5,9 @@ import {
   Heading,
   Spacer,
   HStack,
-  Center,
+  Text,
   Container,
+  Divider,
 } from "@chakra-ui/react";
 
 type LayoutProps = {
@@ -24,7 +25,15 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         px={32}
       >
         <Box p="2">
-          <Heading size="md">Creator PRO</Heading>
+          <Text
+            bgGradient="linear(to-l, teal.500, teal.300)"
+            bgClip="text"
+            fontSize="x-large"
+            fontWeight="extrabold"
+          >
+            Creator PRO
+          </Text>
+          <Divider colorScheme="teal" />
         </Box>
         <Spacer />
         <HStack spacing={12}>
