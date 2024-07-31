@@ -57,7 +57,7 @@ export default function TranscriptionPage() {
         pageName="Transcription Page"
         pageDesc="This page allows content creators to transcribe audio files to text."
       />
-      <VStack spacing={4} mt={4} minW="2xl">
+      <VStack spacing={4} mt={4}>
         <Box borderWidth="1px" borderRadius="lg" p={4} w="100%">
           <Heading as="h3" size="md" mb={2}>
             Upload Audio File
