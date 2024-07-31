@@ -25,14 +25,16 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         px={32}
       >
         <Box p="2">
-          <Text
-            bgGradient="linear(to-l, teal.500, teal.300)"
-            bgClip="text"
-            fontSize="x-large"
-            fontWeight="extrabold"
-          >
-            Creator PRO
-          </Text>
+          <Link href="/">
+            <Text
+              bgGradient="linear(to-l, teal.500, teal.300)"
+              bgClip="text"
+              fontSize="x-large"
+              fontWeight="extrabold"
+            >
+              Creator PRO
+            </Text>
+          </Link>
           <Divider colorScheme="teal" />
         </Box>
         <Spacer />
@@ -42,9 +44,6 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
           </Link>
           <Link href="/transcription">
             <Heading size="sm">Transcription</Heading>
-          </Link>
-          <Link href="/thumbnail">
-            <Heading size="sm">Thumbnail</Heading>
           </Link>
         </HStack>
       </Flex>
