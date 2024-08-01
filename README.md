@@ -7,6 +7,17 @@ Creator PRO is a powerful application designed to assist content creators with s
 - **Script Creation**: Easily create and manage scripts for your content.
 - **Audio Transcription**: Upload audio files and get accurate transcriptions in Bahasa Indonesia (Indonesian Language).
 
+## Workshop
+
+![Workshop_Poster](/public//Workshop_Poster.png)
+
+This project is part of a workshop. The `slides` for the workshop can be found in the slides directory. To see a demo of the final app, you may visit this post on Instagram: [Instagram Demo](https://www.instagram.com/p/C-HqNGESHHF/?img_index=2)
+
+### Branches
+
+- `main`: This branch contains the final and complete code for the Creator PRO application.
+- `development`: This branch contains the starter code for the workshop. Participants will use this branch to follow along with the workshop exercises.
+
 ## Getting Started
 
 ### Prerequisites
