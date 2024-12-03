@@ -1,12 +1,18 @@
-# Creator PRO
+# Building Innovative Apps: Integrating Gemini AI into Web Development
 
-Creator PRO is a powerful application designed to assist content creators with script creation and audio transcription. This tool leverages advanced AI models to provide accurate and efficient transcription services, as well as intuitive script creation capabilities.
+Welcome to the workshop repository for "Building Innovative Apps: Integrating Gemini AI into Web Development". In this workshop, we'll build Creator PRO, a powerful application that demonstrates the integration of Google's Gemini AI with modern web development practices.
 
-## Features
+## Workshop Overview
 
-- **Script Creation**: Easily create and manage scripts for your content.
-- **Audio Transcription**: Upload audio files and get accurate transcriptions in Bahasa Indonesia (Indonesian Language).
-- **Analytics**: Upload and analyze content performance data to identify trends, get AI-powered insights, and receive optimization recommendations.
+Learn how to build a content creation assistant that leverages Gemini AI for script creation, audio transcription, and content performance analytics. This hands-on workshop will guide you through building a real-world application while learning essential concepts in AI integration.
+
+## What You'll Build
+
+Creator PRO is an application that helps content creators with:
+
+- Script creation using Gemini AI
+- Audio transcription in Bahasa Indonesia
+- Content performance analytics with AI-powered insights
 
 ### Branches
 
@@ -19,12 +25,8 @@ Creator PRO is a powerful application designed to assist content creators with s
 
 - Node.js (version 18.x or later)
 - A code editor (VS Code, NVIM, etc.)
-- Basic knowledge of React and TypeScript
+- Basic knowledge of React
 - Google account for Gemini API access
-
-Ensure you have the following installed on your machine:
-
-- Node.js (version 18.x or later)
 
 **Required Environment Variables:**
 
@@ -56,7 +58,7 @@ Ensure you have the following installed on your machine:
 2. Add your API key to the `.env` file:
 
    ```
-    API_KEY=your_gemini_api_key
+    GEMINI_API_KEY=your_gemini_api_key
    ```
 
 ### Running the Application
