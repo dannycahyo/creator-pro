@@ -21,6 +21,10 @@ Ensure you have the following installed on your machine:
 
 - Node.js (version 18.x or later)
 
+**Required Environment Variables:**
+
+- `GEMINI_API_KEY`: Your Google Gemini API key
+
 ### Installation
 
 1. Clone the repository:
