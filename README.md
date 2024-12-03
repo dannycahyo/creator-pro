@@ -6,6 +6,7 @@ Creator PRO is a powerful application designed to assist content creators with s
 
 - **Script Creation**: Easily create and manage scripts for your content.
 - **Audio Transcription**: Upload audio files and get accurate transcriptions in Bahasa Indonesia (Indonesian Language).
+- **Analytics**: Upload and analyze content performance data to identify trends, get AI-powered insights, and receive optimization recommendations.
 
 ### Branches
 
