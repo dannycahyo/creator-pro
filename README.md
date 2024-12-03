@@ -17,6 +17,11 @@ Creator PRO is a powerful application designed to assist content creators with s
 
 ### Prerequisites
 
+- Node.js (version 18.x or later)
+- A code editor (VS Code, NVIM, etc.)
+- Basic knowledge of React and TypeScript
+- Google account for Gemini API access
+
 Ensure you have the following installed on your machine:
 
 - Node.js (version 18.x or later)
