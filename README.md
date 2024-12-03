@@ -1,4 +1,4 @@
-# Building Innovative Apps: Integrating Gemini AI into Web Development
+# Creator PRO
 
 Welcome to the workshop repository for "Building Innovative Apps: Integrating Gemini AI into Web Development". In this workshop, we'll build Creator PRO, a powerful application that demonstrates the integration of Google's Gemini AI with modern web development practices.
 
