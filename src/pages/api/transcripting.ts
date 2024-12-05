@@ -40,7 +40,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       const result = await geminiApiClient.generateContent([
         {
           inlineData: {
-            mimeType: mimeType,
+            mimeType: mimeType ?? "audio/mp3",
             data: base64AudioFile,
           },
         },
