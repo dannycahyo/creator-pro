@@ -5,22 +5,27 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+  // TODO: Implement method checking
+  // HINT: Verify that the request method is POST
 
-  const { input } = req.body;
+  // TODO: Extract the input from request body
+  // HINT: Use req.body.input
 
-  if (!input) {
-    return res.status(400).json({ error: "Input is required" });
-  }
+  // TODO: Validate the input
+  // HINT: Check if input exists, return 400 if not
 
   try {
-    const prompt = `Generate a detailed technical script for a content creator based on the following input: ${input}`;
-    const result = await geminiApiClient.generateContent(prompt);
-    const response = await result.response;
-    const script = response.text();
-    res.status(200).json({ script });
+    // TODO: Create a prompt for the Gemini API
+    // HINT: Use a template string that asks for a technical script based on the input
+
+    // TODO: Call Gemini API and get the response
+    // HINT: Use geminiApiClient.generateContent and extract the text from the response
+
+    // TODO: Return the generated script
+    // HINT: Send response with status 200 and the script in JSON format
+    res.status(200).json({
+      script: "The API implementation is still incomplete!",
+    });
   } catch (error) {
     console.error("Error generating script:", error);
     res.status(500).json({ error: "Failed to generate script" });
