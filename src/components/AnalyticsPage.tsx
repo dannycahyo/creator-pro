@@ -11,29 +11,10 @@ import {
 } from "@chakra-ui/react";
 import Layout from "../components/Layout";
 import PageCard from "../components/PageCard";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
 import { Line } from "react-chartjs-2";
 import { TikTokAnalytics } from "@src/types/Analytics";
 import MarkdownComponent from "./MarkdownComponent";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-);
+import { createChartData } from "@src/utils/createChartData";
 
 const chartOptions = {
   responsive: true,
@@ -67,46 +48,13 @@ const chartOptions = {
   },
 };
 
-const createChartData = (data: TikTokAnalytics[]) => ({
-  labels: data.map((item) => item.Date),
-  datasets: [
-    {
-      label: "Video Views",
-      data: data.map((item) => item["Video Views"]),
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-      yAxisID: "y",
-    },
-    {
-      label: "Profile Views",
-      data: data.map((item) => item["Profile Views"]),
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
-      yAxisID: "y1",
-    },
-    {
-      label: "Likes",
-      data: data.map((item) => item.Likes),
-      borderColor: "rgb(75, 192, 192)",
-      backgroundColor: "rgba(75, 192, 192, 0.5)",
-      yAxisID: "y1",
-    },
-    {
-      label: "Comments",
-      data: data.map((item) => item.Comments),
-      borderColor: "rgb(153, 102, 255)",
-      backgroundColor: "rgba(153, 102, 255, 0.5)",
-      yAxisID: "y1",
-    },
-    {
-      label: "Shares",
-      data: data.map((item) => item.Shares),
-      borderColor: "rgb(255, 159, 64)",
-      backgroundColor: "rgba(255, 159, 64, 0.5)",
-      yAxisID: "y1",
-    },
-  ],
-});
+// Exercise: Analytics Integration
+// TODO:
+// 1. Set up Chart.js configuration
+// 2. Implement CSV file processing
+// 3. Add Gemini API integration for analysis
+// 4. Implement data visualization
+// 5. Add proper error handling and loading states
 
 export default function AnalyticsPage() {
   const [file, setFile] = useState<File | null>(null);
@@ -118,42 +66,13 @@ export default function AnalyticsPage() {
 
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const selectedFile = event.target.files?.[0] || null;
-    setFile(selectedFile);
-  };
+  ) => {};
 
-  const handleAnalyze = async () => {
-    if (!file) return;
-    setIsLoading(true);
+  const handleFileRange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+  ) => {};
 
-    const formData = new FormData();
-    formData.append("csvFile", file);
-    formData.append("range", range);
-
-    try {
-      const response = await fetch("/api/analytics", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) throw new Error("Failed to analyze data");
-
-      const data = await response.json();
-      setAnalysis(data.analysis);
-      setChartData(data.chartData);
-    } catch (error) {
-      console.error("Error:", error);
-      toast({
-        title: "Error",
-        description: "Failed to analyze data",
-        status: "error",
-        duration: 5000,
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const handleAnalyze = async () => {};
 
   return (
     <Layout>
@@ -164,10 +83,7 @@ export default function AnalyticsPage() {
       <VStack spacing={6} mt={4}>
         <Box borderWidth="1px" borderRadius="lg" p={4} w="100%">
           <VStack spacing={4} align="stretch">
-            <Select
-              value={range}
-              onChange={(e) => setRange(e.target.value)}
-            >
+            <Select value={range} onChange={handleFileRange}>
               <option value="7 days">Last 7 Days</option>
               <option value="30 days">Last 30 Days</option>
               <option value="90 days">Last 90 Days</option>
@@ -206,15 +122,7 @@ export default function AnalyticsPage() {
             <Heading size="md" mb={4}>
               Analysis & Recommendations
             </Heading>
-            {isLoading ? (
-              <VStack spacing={4}>
-                <Skeleton height="20px" />
-                <Skeleton height="20px" />
-                <Skeleton height="20px" />
-              </VStack>
-            ) : (
-              <MarkdownComponent content={analysis} />
-            )}
+            <MarkdownComponent content="Your generated analysis & recommendation will appear here!" />
           </Box>
         )}
       </VStack>

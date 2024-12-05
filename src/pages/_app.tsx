@@ -2,7 +2,28 @@ import Head from "next/head";
 import { ChakraProvider } from "@chakra-ui/react";
 import "@src/styles/globals.css";
 import { fonts } from "@src/lib/fonts";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
 import type { AppProps } from "next/app";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+);
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
